@@ -7,8 +7,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "TorchLink",
-  description: "Startup company website",
+  title: "TorchLink | Ultra-Fast Silicon Photonics & Optoelectronic Devices",
+  description: "TorchLink pioneers cutting-edge silicon photonics and optoelectronic devices, delivering ultra-fast data transmission for AI data centers and next-generation connectivity.",
 };
 
 export default function RootLayout({
