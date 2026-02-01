@@ -1,5 +1,6 @@
 import { createClient } from "@/prismicio";
-import { PrismicRichText, PrismicNextImage } from "@prismicio/react";
+import { PrismicRichText } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import { isFilled } from "@prismicio/client";
 
 export default async function AboutPage() {

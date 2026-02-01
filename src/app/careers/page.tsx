@@ -1,6 +1,7 @@
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import { isFilled, asLink } from "@prismicio/client";
+import type { Content } from "@prismicio/client";
 
 // Apply on Indeed opens in a new tab so users keep the site open.
 const APPLY_LINK_TARGET = "_blank";
@@ -8,7 +9,7 @@ const APPLY_LINK_REL = "noopener noreferrer";
 
 export default async function CareersPage() {
   const client = createClient();
-  let jobs: Awaited<ReturnType<typeof client.getByType>>["results"] = [];
+  let jobs: Content.JobDocument[] = [];
   try {
     const response = await client.getByType("job", {
       orderings: [{ field: "my.job.title", direction: "asc" }],
