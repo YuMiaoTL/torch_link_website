@@ -1,0 +1,26 @@
+{
+  "id": "contact",
+  "label": "Contact",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "Contact"
+        }
+      },
+      "body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Contact info",
+          "placeholder": "Address, email, phone or other contact details",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em,hyperlink"
+        }
+      }
+    }
+  }
+}

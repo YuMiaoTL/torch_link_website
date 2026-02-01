@@ -1,0 +1,48 @@
+{
+  "id": "job",
+  "label": "Job",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID",
+          "placeholder": "senior-engineer"
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Job title",
+          "placeholder": "e.g. Senior Engineer"
+        }
+      },
+      "department": {
+        "type": "Text",
+        "config": {
+          "label": "Department",
+          "placeholder": "e.g. Engineering"
+        }
+      },
+      "summary": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Summary",
+          "placeholder": "Short job description",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "indeed_apply_url": {
+        "type": "Link",
+        "config": {
+          "label": "Indeed apply URL",
+          "placeholder": "https://www.indeed.com/...",
+          "allowTargetBlank": true
+        }
+      }
+    }
+  }
+}

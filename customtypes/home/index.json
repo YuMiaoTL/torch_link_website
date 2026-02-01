@@ -1,0 +1,35 @@
+{
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": "Welcome"
+        }
+      },
+      "tagline": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Tagline",
+          "placeholder": "Your company tagline",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "cta_text": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Call to action text",
+          "placeholder": "Optional CTA",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      }
+    }
+  }
+}
