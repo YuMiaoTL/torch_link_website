@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio";
-import { KeyTextField, RichTextField } from "@prismicio/client";
+import { KeyTextField, RichTextField, LinkField } from "@prismicio/client";
 import JobListing from "@/components/JobListing";
 import HomeBackground from "@/components/HomeBackground";
 
@@ -9,6 +9,7 @@ interface JobDocumentData {
   location: KeyTextField;
   salary: KeyTextField;
   job_type: KeyTextField;
+  indeed_apply_url: LinkField;
   description: RichTextField;
   responsibilities: RichTextField;
   qualifications: RichTextField;

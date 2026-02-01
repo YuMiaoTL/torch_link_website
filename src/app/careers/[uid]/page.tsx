@@ -1,6 +1,6 @@
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
-import { KeyTextField, RichTextField } from "@prismicio/client";
+import { KeyTextField, RichTextField, LinkField, asLink } from "@prismicio/client";
 import { notFound } from "next/navigation";
 import { MapPin, Banknote, Briefcase, ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -12,6 +12,7 @@ interface JobDocumentData {
   location: KeyTextField;
   salary: KeyTextField;
   job_type: KeyTextField;
+  indeed_apply_url: LinkField;
   description: RichTextField;
   responsibilities: RichTextField;
   qualifications: RichTextField;
@@ -39,6 +40,9 @@ export default async function JobPage({ params }: { params: Params }) {
   if (!job) {
     notFound();
   }
+
+  const applyUrl = asLink(job.data.indeed_apply_url) || `mailto:careers@torchlink.com?subject=Application for ${job.data.title}`;
+  const isExternalLink = !!asLink(job.data.indeed_apply_url);
 
   return (
     <div className="relative min-h-screen bg-black text-white selection:bg-cyan-500 selection:text-black">
@@ -119,16 +123,22 @@ export default async function JobPage({ params }: { params: Params }) {
               {/* Apply Button Section */}
               <div className="pt-8 border-t border-white/10">
                  <a
-                    href={`mailto:careers@torchlink.com?subject=Application for ${job.data.title}`}
+                    href={applyUrl}
+                    target={isExternalLink ? "_blank" : undefined}
+                    rel={isExternalLink ? "noopener noreferrer" : undefined}
                     className="group relative inline-flex items-center justify-center w-full md:w-auto px-8 py-4 bg-cyan-500 text-black font-bold rounded-full overflow-hidden transition-all hover:bg-cyan-400 hover:scale-105 hover:shadow-[0_0_20px_rgba(6,182,212,0.6)]"
                   >
-                    <span className="relative z-10">Apply for this Position</span>
+                    <span className="relative z-10">
+                      {isExternalLink ? "Apply on Indeed" : "Apply for this Position"}
+                    </span>
                     <ArrowRight className="w-5 h-5 ml-2 relative z-10 group-hover:translate-x-1 transition-transform" />
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   </a>
-                  <p className="mt-4 text-sm text-gray-500">
-                    Or email your resume to <span className="text-cyan-400">careers@torchlink.com</span>
-                  </p>
+                  {!isExternalLink && (
+                    <p className="mt-4 text-sm text-gray-500">
+                      Or email your resume to <span className="text-cyan-400">careers@torchlink.com</span>
+                    </p>
+                  )}
               </div>
             </div>
           </div>

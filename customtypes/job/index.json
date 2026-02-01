@@ -47,6 +47,14 @@
           ]
         }
       },
+      "indeed_apply_url": {
+        "type": "Link",
+        "config": {
+          "label": "Indeed Apply URL",
+          "placeholder": "https://www.indeed.com/...",
+          "allowTargetBlank": true
+        }
+      },
       "description": {
         "type": "StructuredText",
         "config": {
