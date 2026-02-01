@@ -134,11 +134,9 @@ export default async function JobPage({ params }: { params: Params }) {
                     <ArrowRight className="w-5 h-5 ml-2 relative z-10 group-hover:translate-x-1 transition-transform" />
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   </a>
-                  {!isExternalLink && (
-                    <p className="mt-4 text-sm text-gray-500">
-                      Or email your resume to <span className="text-cyan-400">careers@torchlink.com</span>
-                    </p>
-                  )}
+                  <p className="mt-4 text-sm text-gray-500">
+                    Or email your resume to <span className="text-cyan-400">careers@torchlink.com</span>
+                  </p>
               </div>
             </div>
           </div>
