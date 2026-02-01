@@ -16,7 +16,7 @@ export function Footer() {
           </Link>
         </div>
         <p className="text-center text-gray-500 text-sm mt-4">
-          © {new Date().getFullYear()} Torch Link. All rights reserved.
+          © {new Date().getFullYear()} TorchLink. All rights reserved.
         </p>
       </div>
     </footer>

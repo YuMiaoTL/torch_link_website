@@ -1,4 +1,4 @@
-# Torch Link — Startup website
+# TorchLink — Startup website
 
 Next.js marketing site with **About**, **Contact**, and **Careers** (job listings that redirect to Indeed). Content is managed in [Prismic](https://prismic.io).
 
