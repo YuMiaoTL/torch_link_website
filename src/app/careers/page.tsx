@@ -1,75 +1,81 @@
 import { createClient } from "@/prismicio";
-import { PrismicRichText } from "@prismicio/react";
-import { isFilled, asLink } from "@prismicio/client";
-import type { Content } from "@prismicio/client";
+import { KeyTextField, RichTextField } from "@prismicio/client";
+import JobListing from "@/components/JobListing";
+import HomeBackground from "@/components/HomeBackground";
 
-// Apply on Indeed opens in a new tab so users keep the site open.
-const APPLY_LINK_TARGET = "_blank";
-const APPLY_LINK_REL = "noopener noreferrer";
+// Define the expected shape of the Job document data
+interface JobDocumentData {
+  title: KeyTextField;
+  location: KeyTextField;
+  salary: KeyTextField;
+  job_type: KeyTextField;
+  description: RichTextField;
+  responsibilities: RichTextField;
+  qualifications: RichTextField;
+}
+
+interface JobDocument {
+  id: string;
+  uid: string;
+  data: JobDocumentData;
+}
 
 export default async function CareersPage() {
   const client = createClient();
-  let jobs: Content.JobDocument[] = [];
+  let jobs: JobDocument[] = [];
+  
   try {
     const response = await client.getByType("job", {
       orderings: [{ field: "my.job.title", direction: "asc" }],
     });
-    jobs = response.results;
-  } catch {
-    // No job type or no documents yet
+    jobs = response.results as unknown as JobDocument[];
+  } catch (e) {
+    console.error("Failed to fetch jobs", e);
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold mb-8">Careers</h1>
-      <p className="text-lg text-gray-600 mb-12 max-w-2xl">
-        Open roles are listed below. Click &quot;Apply on Indeed&quot; to go to
-        Indeed and complete your application.
-      </p>
+    <div className="relative min-h-screen bg-black text-white selection:bg-cyan-500 selection:text-black">
+      {/* Background Animation */}
+      <div className="fixed inset-0 z-0 pointer-events-none opacity-50">
+        <HomeBackground />
+      </div>
 
-      {jobs.length > 0 ? (
-        <ul className="space-y-6">
-          {jobs.map((job) => (
-            <li
-              key={job.id}
-              className="border border-gray-200 rounded-lg p-6 bg-white shadow-sm"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-gray-900">
-                    {job.data.title ?? "Untitled role"}
-                  </h2>
-                  {isFilled.keyText(job.data.department) && (
-                    <p className="text-sm text-gray-500 mt-1">
-                      {job.data.department}
-                    </p>
-                  )}
-                  {isFilled.richText(job.data.summary) && (
-                    <div className="mt-3 text-gray-600">
-                      <PrismicRichText field={job.data.summary} />
-                    </div>
-                  )}
-                </div>
-                {isFilled.link(job.data.indeed_apply_url) && (
-                  <a
-                    href={asLink(job.data.indeed_apply_url) ?? "#"}
-                    target={APPLY_LINK_TARGET}
-                    rel={APPLY_LINK_REL}
-                    className="inline-flex items-center justify-center rounded bg-gray-900 text-white px-6 py-2 hover:bg-gray-800 whitespace-nowrap shrink-0"
-                  >
-                    Apply on Indeed
-                  </a>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-gray-600">
-          No open positions at the moment. Add Job documents in Prismic to list
-          roles here.
-        </p>
-      )}
+      {/* Overlay Gradient */}
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-black/50 via-black/80 to-black pointer-events-none" />
+
+      <main className="relative z-10 container mx-auto px-4 py-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-5 duration-700">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-100 to-cyan-500">
+              Join the Revolution
+            </h1>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              Help us build the future of ultra-fast optical connectivity. We're looking for brilliant minds to solve the world's toughest engineering challenges.
+            </p>
+          </div>
+
+          {jobs.length > 0 ? (
+            <div className="space-y-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-200">
+              {jobs.map((job) => (
+                <JobListing
+                  key={job.id}
+                  uid={job.uid}
+                  title={job.data.title}
+                  location={job.data.location}
+                  salary={job.data.salary}
+                  jobType={job.data.job_type}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm animate-in fade-in zoom-in duration-500">
+              <p className="text-gray-400 text-lg">
+                No open positions at the moment. Please check back later.
+              </p>
+            </div>
+          )}
+        </div>
+      </main>
     </div>
   );
 }

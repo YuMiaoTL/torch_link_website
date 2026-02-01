@@ -15,32 +15,63 @@
       "title": {
         "type": "Text",
         "config": {
-          "label": "Job title",
-          "placeholder": "e.g. Senior Engineer"
+          "label": "Job Title",
+          "placeholder": "e.g. Senior Software Engineer"
         }
       },
-      "department": {
+      "location": {
         "type": "Text",
         "config": {
-          "label": "Department",
-          "placeholder": "e.g. Engineering"
+          "label": "Job Location",
+          "placeholder": "e.g. New York, NY or Remote"
         }
       },
-      "summary": {
+      "salary": {
+        "type": "Text",
+        "config": {
+          "label": "Salary",
+          "placeholder": "e.g. $120,000 - $150,000"
+        }
+      },
+      "job_type": {
+        "type": "Select",
+        "config": {
+          "label": "Job Type",
+          "placeholder": "Select job type",
+          "options": [
+            "Full-time",
+            "Part-time",
+            "Contract",
+            "Internship",
+            "Temporary"
+          ]
+        }
+      },
+      "description": {
         "type": "StructuredText",
         "config": {
-          "label": "Summary",
-          "placeholder": "Short job description",
+          "label": "Description",
+          "placeholder": "Detailed job description...",
           "allowTargetBlank": true,
-          "multi": "paragraph,strong,em"
+          "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "indeed_apply_url": {
-        "type": "Link",
+      "responsibilities": {
+        "type": "StructuredText",
         "config": {
-          "label": "Indeed apply URL",
-          "placeholder": "https://www.indeed.com/...",
-          "allowTargetBlank": true
+          "label": "Key Responsibilities",
+          "placeholder": "List of responsibilities...",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "qualifications": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Qualifications",
+          "placeholder": "List of qualifications...",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       }
     }
