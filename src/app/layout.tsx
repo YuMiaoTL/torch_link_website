@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "TorchLink pioneers cutting-edge silicon photonics and optoelectronic devices, delivering ultra-fast data transmission for AI data centers and next-generation connectivity.",
   metadataBase: new URL("https://www.torchlink.com"),
   alternates: {
-    canonical: "/",
+    // canonical is set per page
   },
 };
 

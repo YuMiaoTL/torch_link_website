@@ -153,6 +153,9 @@ export async function generateMetadata({ params }: { params: Params }) {
     return {
       title: `${job.data.title} | Careers`,
       description: `Join our team as a ${job.data.title}`,
+      alternates: {
+        canonical: `/careers/${params.uid}`,
+      },
     };
   } catch {
     return {

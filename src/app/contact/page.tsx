@@ -3,6 +3,15 @@
 import HomeBackground from "@/components/HomeBackground";
 import { Mail, MapPin, Send, CheckCircle } from "lucide-react";
 import { useForm, ValidationError } from "@formspree/react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us | TorchLink",
+  description: "Get in touch with TorchLink...",
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function ContactPage() {
   // Replace "YOUR_FORM_ID" with your actual Formspree Form ID

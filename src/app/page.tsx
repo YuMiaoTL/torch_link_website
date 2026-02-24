@@ -1,6 +1,13 @@
 import Link from "next/link";
 import HomeBackground from "@/components/HomeBackground";
 import { ArrowRight, Cpu, Network, Zap } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function HomePage() {
   return (

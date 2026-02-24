@@ -1,6 +1,15 @@
 import Link from "next/link";
 import HomeBackground from "@/components/HomeBackground";
 import { ArrowRight, CheckCircle2, Users, Lightbulb, Target } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | TorchLink",
+  description: "Learn more about TorchLink...",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 export default function AboutPage() {
   return (

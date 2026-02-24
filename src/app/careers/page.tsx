@@ -2,6 +2,15 @@ import { createClient } from "@/prismicio";
 import { KeyTextField, RichTextField, LinkField } from "@prismicio/client";
 import JobListing from "@/components/JobListing";
 import HomeBackground from "@/components/HomeBackground";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Careers | TorchLink",
+  description: "Join the TorchLink team...",
+  alternates: {
+    canonical: "/careers",
+  },
+};
 
 // Define the expected shape of the Job document data
 interface JobDocumentData {
